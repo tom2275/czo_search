@@ -1,0 +1,278 @@
+<div>	
+
+	<a ng-show="mobileMode && !showingMobileFiltersModal" 
+		ng-click="showingMobileFiltersModal = true" 
+		href="javascript:void(0);"
+		class="filters-toggle filters-toggle-on">
+		<div class="label-container">
+			<i class="icon-filter"></i> FILTERING TOOLS
+		</div>
+	</a>
+
+	<div ng-hide="mobileMode && !showingMobileFiltersModal" ng-class="{'mobile-modal': mobileMode}" class="filters-container">
+		<!-- F I L T E R S -->
+
+		<form ng-submit="manualSubmit()">
+			<div id="search-filter">
+					<input type="search" placeholder="SEARCH KEYWORDS" ng-model="searchText">
+					<img src="/assets/img/icons/black_search.png" ng-click="manualSubmit()">
+			</div>
+		</form>
+
+
+		<!-- location filter -->
+		<a class="filter-group-toggle first" href="javascript:void(0)" ng-click="isLocationCollapsed = !isLocationCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-map-marker subdued"></i>
+				Location 
+				<i ng-show="isLocationCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isLocationCollapsed" class="icon-angle-down pull-right"></i>
+			</div>		
+		</a>
+		<div collapse="isLocationCollapsed" id="location-filter" class="filter-group-container">
+		
+			<p ng-show="filteredLocation" class="directions">
+				<a class="select-all-link" href="javascript:void(0)" ng-click="clearLocationFilter()">CLEAR</a><small class="subdued">&nbsp;|&nbsp;Click map to select</small>
+			</p>
+			<p ng-hide="filteredLocation" class="directions">
+				<small class="subdued">Click map to select</small>
+			</p>
+			
+			<div leaflet defaults="mapOptions" center="center" markers="markers" class="leaflet-directive"></div>
+
+			<p class="attribution subdued">
+				Map data CC-BY-SA by <a href="http://www.opendatacommons.org/licenses/odbl">OpenStreeMap</a>
+			</p>
+			<p class="attribution subdued">
+				Tiles by <a href="http://www.mapquest.com/">MapQuest</a>
+			</p>
+		
+		</div>
+
+		<!-- categories filter -->
+		<!--<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isCategoryCollapsed = !isCategoryCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-th subdued"></i>
+				Disciplines
+				<i ng-show="isCategoryCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isCategoryCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isCategoryCollapsed" id="categories-filter" class="filter-group-container">
+
+			<div class="filter-option-group" ng-repeat="category in categories">
+				<p class="filter-option-group-label">{{ category.label | titleCase }} Data</p>
+				<ul class="unstyled filter-options">
+					<li ng-repeat="subcategory in category.subcategories" ng-click="toggleSubcategory(subcategory.key)">
+						<i ng-class="{'icon-check': isSelectedSubcategory(subcategory.key), 
+							'icon-check-empty': !isSelectedSubcategory(subcategory.key) }"></i>{{ subcategory.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ subcategory.count }}</strong>
+					</li>
+
+					
+				</ul>
+			</div>
+
+		</div> -->
+				<!-- issues filter -->
+		<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isIssuesCollapsed = !isIssuesCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-tags subdued"></i>
+				Observatories
+				<i ng-show="isIssuesCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isIssuesCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isIssuesCollapsed" id="tags-filter" class="filter-group-container">
+
+			<ul class="unstyled filter-options">
+				<li ng-repeat="issue in issues" ng-click="toggleIssue(issue.key)">
+					<i ng-class="{'icon-check': isSelectedIssue(issue.key), 
+						'icon-check-empty': !isSelectedIssue(issue.key)}"></i>{{ issue.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ issue.count }}</strong>
+				</li>
+			</ul>
+
+		</div>
+		       
+				<!--
+				
+				
+				
+				
+				
+				
+				
+				
+ <a class="filter-group-toggle" href="javascript:void(0)" ng-click="isDisciplinesCollapsed = !isDisciplinesCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-th subdued"></i>
+				Disciplines
+				<i ng-show="isDisciplinesCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isDisciplinesCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isDisciplinesCollapsed" id="Disciplines-filter" class="filter-group-container">
+			<!--<a class="select-all-link" href="javascript:void(0)">SELECT ALL</a>- ->
+			<ul class="unstyled filter-options">
+				<li><a href="/discover/#?text=Biogeochemistry"><i class="icon-check-empty" ng-click=""></i>&nbsp;Biogeochemistry</a></li>
+				<li><a href="/discover/#?text=Biology Ecology"><i class="icon-check-empty"></i>&nbsp;Biology / Ecology</a></li>
+				<li><a href="/discover/#?text=Biology Molecular"><i class="icon-check-empty"></i>&nbsp;Biology / Molecular</a></li>
+				<li><a href="/discover/#?text=Meteorology"><i class="icon-check-empty"></i>&nbsp;Climatology / Meteorology</a></li>
+				<li><a href="/discover/#?text=Data Management CyberInfrastructure"><i class="icon-check-empty"></i>&nbsp;Data Management / CyberInfrastructure</a></li>
+				<li><a href="/discover/#?text=Engineering Method Development"><i class="icon-check-empty"></i>&nbsp;Engineering / Method Development</a></li>
+				<li><a href="/discover/#?text=Geochemistry"><i class="icon-check-empty"></i>&nbsp;Geochemistry / Mineralogy</a></li>
+				<li><a href="/discover/#?text=Geology Chronology"><i class="icon-check-empty"></i>&nbsp;Geology / Chronology</a></li>
+				<li><a href="/discover/#?text=Geomorphology"><i class="icon-check-empty"></i>&nbsp;Geomorphology</a></li>
+				<li><a href="/discover/#?text=Geophysics"><i class="icon-check-empty"></i>&nbsp;Geophysics</a></li>
+				<li><a href="/discover/#?text=GIS"><i class="icon-check-empty"></i>&nbsp;GIS / Remote Sensing</a></li>
+				<li><a href="/discover/#?text=Hydrology"><i class="icon-check-empty"></i>&nbsp;Hydrology</a></li>
+				<li><a href="/discover/#?text=Modeling Computational Science"><i class="icon-check-empty"></i>&nbsp;Modeling / Computational Science</a></li>
+				<li><a href="/discover/#?text=Outreach Education research"><i class="icon-check-empty"></i>&nbsp;Outreach / Education research</a></li>
+				<li><a href="/discover/#?text=Pedology"><i class="icon-check-empty"></i>&nbsp;Soil Science / Pedology</a></li>
+				<li><a href="/discover/#?text=Water Chemistry"><i class="icon-check-empty"></i>&nbsp;Water Chemistry</a></li>
+			</ul>
+		</div>
+		-->
+		<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isCategoryCollapsed = !isCategoryCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-th subdued"></i>
+				Disciplines
+				<i ng-show="isCategoryCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isCategoryCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isCategoryCollapsed" id="categories-filter" class="filter-group-container">
+
+			<div class="filter-option-group" ng-repeat="category in categories">
+				<p class="filter-option-group-label">{{ category.label | titleCase }} Data</p>
+				<ul class="unstyled filter-options">
+					<li ng-repeat="subcategory in category.subcategories" ng-click="toggleSubcategory(subcategory.key)">
+						<i ng-class="{'icon-check': isSelectedSubcategory(subcategory.key), 
+							'icon-check-empty': !isSelectedSubcategory(subcategory.key) }"></i>{{ subcategory.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ subcategory.count }}</strong>
+					</li>
+
+					
+				</ul>
+			</div>
+
+		</div>
+		         <!-- sources filter 
+				 
+                <a class="filter-group-toggle" href="javascript:void(0)" ng-click="isSourcesCollapsed = !isSourcesCollapsed">
+                        <div class="filter-group-label">
+                                <i class="icon-cloud-download subdued"></i>
+                                Geology
+                                <i ng-show="isSourcesCollapsed" class="icon-angle-right pull-right"></i>
+                                <i ng-hide="isSourcesCollapsed" class="icon-angle-down pull-right"></i>
+                        </div>
+                </a>
+                <div collapse="isSourcesCollapsed" id="sourcess-filter" class="filter-group-container">
+
+                        <ul class="unstyled filter-options">
+                            
+							<li ng-repeat="source in sources" ng-click="toggleSource(source.key)">
+                                <i ng-class="{'icon-check': isSelectedSource(source.key),
+                                    'icon-check-empty': !isSelectedSource(source.key) }"></i>{{ source.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ source.count }}</strong>
+									
+									<
+								<li><a href="/discover/#?text=Boulder"><i class="icon-check-empty"></i>&nbsp;Boulder Creek</a></li>
+								<li><a href="/discover/#?text=Calhoun"><i class="icon-check-empty"></i>&nbsp;Calhoun</a></li>
+								<li><a href="/discover/#?text=Catalina Jemez"><i class="icon-check-empty"></i>&nbsp;Catalina-Jemez</a></li>
+								<li><a href="/discover/#?text=Christina"><i class="icon-check-empty"></i>&nbsp;Christina River Basin</a></li>
+								<li><a href="/discover/#?text=eel"><i class="icon-check-empty"></i>&nbsp;Eel River</a></li>
+								<li><a href="/discover/#?text=iml"><i class="icon-check-empty"></i>&nbsp;Intensively Managed Landscapes</a></li>
+								<li><a href="/discover/#?text=Luquillo"><i class="icon-check-empty"></i>&nbsp;Luquillo</a></li>
+								<li><a href="/discover/#?text=Reynolds"><i class="icon-check-empty"></i>&nbsp;Reynolds Creek</a></li>
+								<li><a href="/discover/#?text=shale hills"><i class="icon-check-empty"></i>&nbsp;Shale Hills</a></li>
+								<li><a href="/discover/#?text=sierra"><i class="icon-check-empty"></i>&nbsp;Southern Sierra</a></li>
+
+
+								
+
+                            </li>
+                        </ul>
+                </div>-->
+		<!-- issues filter 
+		<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isIssuesCollapsed = !isIssuesCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-tags subdued"></i>
+				Geology
+				<i ng-show="isIssuesCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isIssuesCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isIssuesCollapsed" id="tags-filter" class="filter-group-container">
+
+			<ul class="unstyled filter-options">
+				<li ng-repeat="issue in issues" ng-click="toggleIssue(issue.key)">
+					<i ng-class="{'icon-check': isSelectedIssue(issue.key), 
+						'icon-check-empty': !isSelectedIssue(issue.key)}"></i>{{ issue.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ issue.count }}</strong>
+				</li>
+			</ul>
+
+		</div>-->
+
+
+
+                <!-- sources filter 
+                <a class="filter-group-toggle" href="javascript:void(0)" ng-click="isEcosystemsCollapsed = !isEcosystemsCollapsed">
+                        <div class="filter-group-label">
+                                <i class="icon-cloud-download subdued"></i>
+                                Ecosystems
+                                <i ng-show="isEcosystemsCollapsed" class="icon-angle-right pull-right"></i>
+                                <i ng-hide="isEcosystemsCollapsed" class="icon-angle-down pull-right"></i>
+                        </div>
+                </a>
+                <div collapse="isEcosystemsCollapsed" id="sourcess-filter" class="filter-group-container">
+
+                        <ul class="unstyled filter-options">
+                            <li ng-repeat="source in sources" ng-click="toggleSource(source.key)">
+                                <i ng-class="{'icon-check': isSelectedSource(source.key),
+                                    'icon-check-empty': !isSelectedSource(source.key) }"></i>{{ source.label | titleCase }}&nbsp;&nbsp;&nbsp;<strong>{{ source.count }}</strong>
+                            </li>
+                        </ul>
+                </div>
+				
+								
+
+				<p><label>&nbsp;&nbsp;<input type="checkbox" name="onlyCZOsites" value="CZOonly" checked>&nbsp;Only data from CZOs</label>
+				</p>
+
+				-->
+				
+		<!-- formats filter 
+		<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isFormatsCollapsed = !isFormatsCollapsed">
+			<div class="filter-group-label">
+				<i class="icon-file-alt subdued"></i>
+				Formats
+				<i ng-show="isFormatsCollapsed" class="icon-angle-right pull-right"></i>
+				<i ng-hide="isFormatsCollapsed" class="icon-angle-down pull-right"></i>
+			</div>
+		</a>
+		<div collapse="isFormatsCollapsed" id="formats-filter" class="filter-group-container">
+			<a class="select-all-link" href="javascript:void(0)">SELECT ALL</a>
+			<ul class="unstyled filter-options">
+				<li><i class="icon-check-empty"></i>JSON <strong>00</strong></li>
+				<li><i class="icon-check-empty"></i>CSV <strong>00</strong></li>
+				<li><i class="icon-check-empty"></i>KML <strong>00</strong></li>
+				<li><i class="icon-check-empty"></i>Full Metadata <strong>00</strong></li>
+			</ul>
+		</div>-->
+		
+		<!-- <a ng-show="mobileMode" 
+			ng-click="manualSubmit()" 
+			class="filters-toggle filters-toggle-cancel"
+			href="javascript:void(0);">
+			CANCEL
+		</a> -->
+		
+		<a ng-show="mobileMode" 
+			ng-click="manualSubmit()" 
+			class="filters-toggle filters-toggle-submit"
+			href="javascript:void(0);">
+			SUBMIT <!-- <i class="icon-angle-right"></i> -->
+		</a>
+
+
+	</div>
+
+</div>

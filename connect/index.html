@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" class="ng-app:wcodpApp" ng-app="wcodpApp">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Critical Zone Observatories Data Portal | Connect</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/all.css?v=0.4">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/assets/css/ie8.css">
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+      <link rel="stylesheet" href="/assets/css/ie7.css">
+    <![endif]-->
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <div class="header container">
+		<!--underconstrution-->
+	<div class="row">
+	<div class="span12" style="background-color:yellow;text-align:center"><img src="/assets/img/under_construction.png"></div>
+	</div>
+	<!--underconstrution-->
+	<div class="row">
+		<div class="span4 brand">
+			<a href="/"><img src="/assets/img/czo_logo.png"></a>
+		</div>
+
+		<!--  D E S K T O P   M E N U -->
+		<div class="span8 visible-desktop">
+			<div class="clearfix">
+				<span class="pull-right description subdued">A project of the <a href="http://www.criticalzone.org" target="_blank">Critical Zone Obervatories</a></span>
+			</div>
+			<div class="top-nav">
+				<ul class="unstyled inline">
+					
+						
+						<li>
+						
+							<a href="/discover">discover</a>
+						</li>
+					
+						
+						<li class="active connect">
+							<img src="/assets/img/icons/menu_caret.png">
+						
+							<a href="/connect">connect</a>
+						</li>
+					
+						
+						<li>
+						
+							<a href="/inform">inform</a>
+						</li>
+					
+						
+						<li>
+						
+							<a href="/about">about</a>
+						</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<!--  N O N - D E S K T O P   M E N U -->
+		<div class="dropdown top-nav-mobile hidden-desktop">
+			<a class="dropdown-toggle" href="javascript:void(0)">MENU <i class="icon-angle-down"></i></a>
+			<ul class="dropdown-menu pull-right">
+				
+					<li>
+				
+						<a href="/">home</a>
+					</li>
+				
+				
+					
+					<li>
+					
+						<a href="/discover">discover</a>
+					</li>
+				
+					
+					<li class="active connect">
+					
+						<a href="/connect">connect</a>
+					</li>
+				
+					
+					<li>
+					
+						<a href="/inform">inform</a>
+					</li>
+				
+					
+					<li>
+					
+						<a href="/about">about</a>
+					</li>
+				
+			</ul>				
+		</div>
+
+	</div>
+</div>
+
+    <!--<div class="container" id="connect" ng-controller="ConnectCtrl">-->
+<div class="container" id="about">
+
+	<div class="row">
+
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<h3>Connect to data producers and users</h3>
+				<div>
+					<img src="/assets/img/czo_tree.jpg" alt="Data Network Graphic" align="right" hspace="12" vspace="2" />
+					<p>The Critical Zone Data Network is dedicated to increasing communication between state and federal agencies, tribes, universities, NGOs, and industry to leverage resources for new data collection, develop data best management practices, conduct trainings, and ensure compatibility of regional datasets. </p>
+					
+                    <p>Need more text here</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<h3>Connect to portal services and data</h3>
+				<div>
+					<p>In addition to the "Discover" web interface for data seekers, this portal provides several machine pathways for application developers to enable them to search and connect to the services and datasets published by network members. These pathways represent multiple ways that portal services can be integrated into local tools, and thereby enable smaller projects to benefit from the published contributions of the wider network.
+					</p><p>Read more about these pathways and how to use them below:</p>
+					<ul>
+					<li><a href="" scroll-to="csw" >Catalog Services for the Web (CSW)</a></li>
+					<li><a href="" scroll-to="esri" >ESRI Geoportal REST API</a></li>
+					<li><a href="" scroll-to="opensearch" >OpenSearch API</a></li>
+					<li><a href="" scroll-to="solr" >SOLR REST API</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" id="csw">
+		<div class="home-item blue span12">
+			<div class="home-item-cntr about">
+				<div class="home-item-label inverse clearfix">
+					<div class="pull-left">Catalog Services for the Web (CSW)</div>
+				</div>
+				<div>
+					<p>CSW is an open standard created by the Open Geospatial Consortium for discovering, browsing, and querying metadata records from a data catalog.  This portal uses CSW to harvest many of the published resources from our network providers, and in turn publishes a CSW interface that you can connect to.  Access our CSW interface at the following URL using your favorite CSW client:</p>
+					<br/>
+					<p><a target="_blank" href="http://search.criticalzone.org/czoportal/csw">http://search.criticalzone.org/czoportal/csw</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<p><a target="_blank" href="http://en.wikipedia.org/wiki/Catalog_Service_for_the_Web">What is a Catalog Service for the Web?</a></p>
+				<p><a target="_blank" href="http://webhelp.esri.com/geoportal_extension/9.3.1/index.htm#geoportal_csw_cmpnts.htm">ESRI Geoportal CSW Documentation</a></p>
+
+				<hr/>
+
+				<p class="medium">Example 1 - click the following URL to query the capabilities of our CSW and return the results as an XML document.</p>
+				<p class="medium"><a target="_blank" href="http://search.criticalzone.org/czoportal/csw?service=CSW&version=2.0.2&request=GetCapabilities">http://search.criticalzone.org/czoportal/csw?service=CSW&version=2.0.2&request=GetCapabilities</a></p>
+
+				<hr/>
+
+				<p>Example 2 - click the following URL to initiate a CSW <i>GetRecords</i> query that returns the first 10 ISO metadata records found in the catalog as an XML document.</p>
+				<p><a target="_blank" href="http://search.criticalzone.org/czoportal/csw?REQUEST=GetRecords&SERVICE=CSW&VERSION=2.0.2&OUTPUTSCHEMA=http://www.isotc211.org/2005/gmd&RESULTTYPE=results&TYPENAMES=csw:Record">http://search.criticalzone.org/czoportal/csw?REQUEST=GetRecords&SERVICE=CSW&VERSION=2.0.2&OUTPUTSCHEMA=http://www.isotc211.org/2005/gmd&RESULTTYPE=results&TYPENAMES=csw:Record</a></p>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="row" id="esri">
+		<div class="home-item blue span12">
+			<div class="home-item-cntr about">
+				<div class="home-item-label inverse clearfix">
+					<div class="pull-left">ESRI Geoportal REST API</div>
+				</div>
+				<div>
+					<p>At the heart of this portal is an ESRI Geoportal data catalog, which provides an easy to use HTTP-based interface for querying resources. Access our Geoportal REST API at:</p>
+					<br/>
+					<p><a target="_blank" href="http://search.criticalzone.org/czoportal/rest/">http://search.criticalzone.org/czoportal/rest/</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<p><a target="_blank" href="https://github.com/Esri/geoportal-server/wiki/REST-API-Syntax">Geoportal REST API Documentation</a></p>
+			
+				<hr/>
+
+				<p>Example 1 - click the following URL to initiate a Geoportal <i>find</i> query that returns the first 10 metadata records in the portal as a JSON document:</p>
+					<p><a target="_blank" href="http://search.criticalzone.org/czoportal/rest/find/document?f=pjson">http://search.criticalzone.org/czoportal/rest/find/document?f=pjson</a></p>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row" id="opensearch">
+		<div class="home-item blue span12">
+			<div class="home-item-cntr about">
+				<div class="home-item-label inverse clearfix">
+					<div class="pull-left"></a>OpenSearch API</div>
+				</div>
+				<div>
+					<p>OpenSearch is an open standard for search created by Amazon A9 that makes records available in a format suitable for syndication and aggregation.  Access our OpenSearch API at:</p>
+					<br/>
+					<p><a target="_blank" href="http://search.criticalzone.org/czoportal/rest/find/document">http://search.criticalzone.org/czoportal/rest/find/document</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<p><a target="_blank" href="http://webhelp.esri.com/geoportal_extension/9.3.1/index.htm#rest_opensrch.htm">Add our portal as a search provider in your favorite web browser</a></p>
+			
+				<hr/>
+
+				<p>Example 1 - click the following URL to query the description of our OpenSearch API and return the results as an XML document.</p>
+					<p><a target="_blank" href="http://search.criticalzone.org/czoportal/openSearchDescription">http://search.criticalzone.org/czoportal/openSearchDescription</a></p>
+
+				<hr/>
+
+				<p>Example 2 - click the following URL to initiate a search that returns all records with the keyword 'bathymetry' as a GeoRSS XML document:</p>
+				<p><a target="_blank" href="http://search.criticalzone.org/czoportal/rest/find/document?searchText=keywords:%hydrology">http://search.criticalzone.org/czoportal/rest/find/document?searchText=keywords:%20hydrology</a></p>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row" id="solr">
+		<div class="home-item blue span12">
+			<div class="home-item-cntr about">
+				<div class="home-item-label inverse clearfix">
+					<div class="pull-left"></a>SOLR REST API</div>
+				</div>
+				<div>
+					<p>SOLR provides blazing-fast full-text and faceted search through a standard REST interface.  It's the driving force behind our <a href="/discover/">Discover</a> page.  Access our SOLR REST API at:</p>
+					<br/>
+					<p><a target="_blank" href="/solr/collection1/select">http://maxim.ucsd.edu/solr/collection1/select</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="home-item white span12">
+			<div class="home-item-cntr learn-more">
+				<p><a target="_blank" href="http://lucene.apache.org/solr/">What is SOLR?</a></p>
+				<p><a target="_blank" href="http://www.solrtutorial.com/index.html">How do I use the SOLR REST API?</a></p>
+			
+				<hr/>
+
+				<p>Example 1 - click the following URL to initiate a SOLR <i>select</i> query that return the first 20 metadata records for the marine debris category as a JSON document:</p>
+				<p><a target="_blank" href="/solr/collection1/select?&q=*+sys.src.collections_ss:%20(Issue|Marine_Debris)&rows=20&wt=json">http://maxim.ucsd.edu/solr/collection1/select?&q=*+sys.src.collections_ss:%20(Issue|Marine_Debris)&rows=20&wt=json</a></p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+    <div class="footer container">
+	<div class="row">
+		<div class="span12">
+			<a href="mailto:ec_apps@sdsc.edu">Feedback? email: ec_apps@sdsc.edu</a>
+			<span class="pull-right"><a class="subdued" href="/connect">API ACCESS</a></span>
+		</div>
+	</div>
+</div>
+
+    <!--[if lt IE 9]>
+      <script src="/assets/js/ie8.js"></script>
+    <![endif]-->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script src="/assets/js/all.js?v=0.4"></script>
+
+    <script>
+      var _gaq=[['_setAccount','UA-40820108-2'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src='//www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  </body>
+</html>

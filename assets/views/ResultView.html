@@ -1,0 +1,57 @@
+
+<div class="result clearfix result-closed" ng-click="resultClicked($event)" id="{{ resultData['sys.src.item.uri_s'] }}">
+	<a class="result-close-link" href="javascript:void(0)" ng-click="resultCloseClicked($event)"><i class="icon-remove-sign"></i></a>
+	<div class="result-info">
+		<div class="result-title" ng-click="resultCloseClicked($event)">
+			{{resultData.title[0]}}
+		</div>
+		<p class="result-description">
+			{{resultData.description}}
+		</p>
+	</div>
+	<div class="result-links">
+		<ul class="unstyled links">
+
+			<li ng-repeat="link in links">
+				<a target="_blank" ng-click="linkClicked($event)" href="{{ link.href }}">{{ allowedLinkTypes[link.type].label }}</a>
+				<i class="icon-info-sign" tooltip-placement="bottom" tooltip="{{allowedLinkTypes[link.type].tooltip}}"></i>
+			</li>
+			
+			
+			<li><a target="_blank" ng-click="linkClicked($event)" href="{{ metadataXmlUrl() }}">METADATA XML</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="Metadata XML Document (ISO or FGDC)"></i></li>
+			<li><a target="_blank" ng-click="linkClicked($event)" href="{{ jsonUrl() }}">JSON</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="ESRI REST Service JSON"></i></li> 
+			<li><a target="_blank" ng-click="linkClicked($event)" href="{{ openUrl() }}">OPEN</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="ESRI REST Service JSON"></i></li> 
+			
+		</ul>
+	</div>
+	<div class="result-details clearfix">
+		<div class="result-map" id="result-map-{{ resultData['sys.src.item.uri_s'] }}">
+
+		</div>
+		<dl class="result-metadata clearfix">
+			
+			<dt>date published</dt>
+			<dd ng-hide="metadata.datePublished">not available</dd>
+			<dd ng-show="metadata.datePublished">{{metadata.datePublished}}</dd>
+
+			<dt>creator</dt>
+			<dd ng-hide="metadata.creator">not available</dd>
+			<dd ng-show="metadata.creator">{{metadata.creator}}</dd> 
+			
+			<dt>publisher</dt>
+			<dd ng-hide="metadata.publisher">not available</dd>
+			<dd ng-show="metadata.publisher">{{metadata.publisher}}</dd>
+			
+			<dt>contact</dt>
+			<dd ng-hide="metadata.contactName || metadata.contactEmail">not available</dd>
+			<dd ng-show="metadata.contactEmail">{{metadata.contactName}}</dd>
+			<dd ng-show="metadata.contactEmail">{{metadata.contactEmail}}</dd>
+			
+			<dt>constraints</dt>
+			<dd ng-hide="metadata.constraints">not available</dd>
+			<dd ng-show="metadata.constraints">{{metadata.constraints}}</dd>
+		</dl>
+		<div class="clearfix">&nbsp;</div>
+		<p class="harvest-info subdued pull-right">Harvested {{resultData['sys.src.item.lastmodified_tdt'] | date:short }} from <a ng-href={{resultData['sys.src.site_url_s']}}>{{resultData['sys.src.site.name_s']}}</a></p>	
+	</div>
+</div>
