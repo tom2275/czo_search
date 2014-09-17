@@ -31962,7 +31962,11 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                 esrirest: {
                     label: 'ESRI REST',
                     tooltip: "ArcGIS Server Web Service"
-                }
+                },
+				open:{
+					label: 'Open',
+					tooltip: "Access resource"
+				}
             };
 
 
