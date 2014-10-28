@@ -10231,6 +10231,7 @@ function isDate(value){
  *
  * @description
  * Determines if a reference is an `Array`.
+ * Determines if a reference is an `Array`.
  *
  * @param {*} value Reference to check.
  * @returns {boolean} True if `value` is an `Array`.
@@ -30660,10 +30661,16 @@ angular.module('wcodpApp').factory('solr', ['$http', '$location', function($http
         q = txt && txt.length > 0 ? q + txt : applyingNonTextFilters ? q + '* ' : '';
         return q;
     }
-
+//fq=envelope_geo:"Intersects(-74.26953125 11.083984375 -59.4599609375 24.267578125)
     function getBoundingBoxQuery(filterVals) {
-        var ll = filterVals.latLng;
-        return ll && ll.lat && ll.lng ? "{!bbox pt=" + ll.lat + "," + ll.lng + " sfield=envelope_geo d=0.001} " : "";
+        var ll = filterVals.latLng;  
+		//var s="";
+		//if (ll && ll.lat && ll.lng){
+		//   s = 'envelope_geo:"Intersects('+ll.lng-3.0 +' '+ll.lat-3.0+' '+ll.lng+3.0+' '+ll.lat+3.0+')"' : '';
+		//}
+		//return s; 
+		//return ll && ll.lat && ll.lng ? "envelope_geo:%22Intersects("+ll.lng-3.0 +" "+ll.lat-3.0+" "+ll.lng+3.0+" "+ll.lat+3.0+")%22:"";
+        return ll && ll.lat && ll.lng ? "{!bbox pt=" + ll.lat + "," + ll.lng + " sfield=envelope_geo d=3.0} " : "";
     }
 
     function getCollectionsQuery(facetName, filterVals) {
@@ -30864,18 +30871,19 @@ angular.module('wcodpApp').factory('metadata', [function() {
             iso: "gmd\\:MD_Metadata > gmd\\:identificationInfo > gmd\\:MD_DataIdentification > gmd\\:citation > gmd\\:CI_Citation > gmd\\:date > gmd\\:CI_Date > gmd\\:date > gco\\:DateTime, identificationInfo > MD_DataIdentification > citation > CI_Citation > date > CI_Date > date > DateTime"
         },
         creator: {
-            cd: "rdf\\:RDF > rdf\\:Description > dc\\:creator",
+            cd: "rdf\\:RDF > rdf\\:Description > dc\\:creator, rdf\\:RDF > rdf\\:Description > creator",
+			//dc: "rdf\\:RDF > rdf\\:Description > creator",
             fgdc: "metadata > idinfo > citation > citeinfo > origin",
-            iso: "gmd\\:MD_Metadata > gmd\\:identificationInfo > gmd\\:MD_DataIdentification > gmd\\:pointOfContact > gmd\\:CI_ResponsibleParty > gmd\\:organisationName > gco\\:CharacterString, identificationInfo > MD_DataIdentification > pointOfContact > CI_ResponsibleParty > organisationName > CharacterString"
-        },
+            iso: "gmd\\:MD_DataIdentification > gmd\\:pointOfContact > gmd\\:CI_ResponsibleParty > gmd\\:organisationName > gco\\:CharacterString, identificationInfo > MD_DataIdentification > pointOfContact > CI_ResponsibleParty > organisationName > CharacterString"
+        }, //gmd\\:MD_Metadata > gmd\\:identificationInfo > 
         publisher: {
-            cd: "",
+            cd: "",			
             fgdc: "metadata > distinfo > distrib > cntinfo > cntorgp > cntorg",
             //fgdc: "metadata > idinfo > citation > citeinfo > pubinfo > publish",
             iso: "gmd\\:contact > gmd\\:CI_ResponsibleParty > gmd\\:organisationName > gco\\:CharacterString, contact > CI_ResponsibleParty > organisationName > CharacterString"
         },
         contactName: {
-            cd: "",
+            cd: "",			
             fgdc: "metadata > idinfo > ptcontac > cntinfo > cntorgp > cntper",
             iso: "gmd\\:identificationInfo > gmd\\:MD_DataIdentification > gmd\\:pointOfContact > gmd\\:CI_ResponsibleParty > gmd\\:individualName > gco\\:CharacterString, identificationInfo > MD_DataIdentification > pointOfContact > CI_ResponsibleParty > individualName > CharacterString"
         },
@@ -31964,9 +31972,22 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                     tooltip: "ArcGIS Server Web Service"
                 },
 				open:{
-					label: 'Open',
+					label: 'Access Data',
 					tooltip: "Access resource"
+				},				
+				hdr:{
+					label: 'Display File',
+					tooltip: "Access Raw Data"
+				},
+				doi:{
+					label: 'DOI',
+					tooltip: "Access Raw Data"
+				},
+				cmspage:{
+					label: 'CZO Dataset',
+					tooltip: "criticalzone.org"
 				}
+				
             };
 
 
@@ -31992,6 +32013,9 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                     if (bounds.length) {
                         scope.setupMap(id, bounds[0].split(" "));
                     }
+					//if (scope.resultData.description){
+					//;	scope.resultData.description = scope.resultData.description.split("***").join("<br/>");
+					//}
                     scope.populateMetadataFields(id);
                 }
             };
@@ -32021,22 +32045,34 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                 if (scope.map) { 
                     // Already setup
                     return; 
+					//scope.map.remove();
                 }
                 if (bounds.length === 4) {
-                    var p1 = new L.LatLng(bounds[1], bounds[0]), // sw
-                        p2 = new L.LatLng(bounds[3], bounds[2]), // ne
+					var p1, p2;
+					if ((Math.abs(bounds[0]-bounds[1]) < 1) && ((Math.abs(bounds[2]-bounds[3])<1 ))){
+					    p1 = new L.LatLng(bounds[1], bounds[3]); // sw
+                        p2 = new L.LatLng(bounds[0], bounds[2]); // ne
+					}else{
+					
+						p1 = new L.LatLng(bounds[1], bounds[0]); // sw
+                        p2 = new L.LatLng(bounds[3], bounds[2]); // ne
+					}
                         bbox = new L.Rectangle([p1, p2], {color: "#ff7800", weight: 1, clickable: false});
+						if (!scope.map){
 
-                    scope.map = new L.Map('result-map-' + mapContainerId, {
-                        doubleClickZoom: false,
-                        scrollWheelZoom: false,
-                        zoomControl: false,
-                        dragging: false,
-                        touchZoom: false,
-                        boxZoom: false,
-                        tap: false,
-                        keyboard: false
-                    }).fitBounds(bbox);
+						  scope.map = new L.Map('result-map-' + mapContainerId, {
+							doubleClickZoom: false,
+							scrollWheelZoom: false,
+							zoomControl: false,
+							dragging: false,
+							touchZoom: false,
+							boxZoom: false,
+							tap: false,
+							keyboard: false
+						})
+					}
+					scope.map.fitBounds(bbox);
+					
 
                     L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
                         attribution: '',
@@ -32056,7 +32092,12 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                 metadata.getXml(mUrl, function (xml) {
                     scope.$apply(function () {
                         _.each(scope.metadata, function (val, key) {
+							//if (key="")
                             scope.metadata[key] = metadata.get(key, xml);
+							//if (scope.metadata[key] ){
+							//	scope.metadata[key] = scope.metadata[key].replace("***","<br/><br/><br/>");
+							//	//alert(key);
+							//}							
                         });
                     });
                 });
@@ -32069,9 +32110,9 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
             scope.jsonUrl = function () {
                 return scope.metadataXmlUrl() + '&f=pjson';
             };
-			scope.openUrl = function(){
-				return 'http://www.sdsc.edu';
-			};
+			//scope.openUrl = function(){
+			//	return 'http://www.sdsc.edu';
+			//};
             scope.getLinks = function () {
                 $http.get(scope.jsonUrl()).success(function (data) {
                     var allLinks = [];
@@ -32085,6 +32126,25 @@ angular.module('wcodpApp').directive('result', ['$http', '$location', 'metadata'
                     _.each(allLinks, function (element, index, list) {
                         if (element.type && angular.lowercase(element.type) in scope.allowedLinkTypes) {
                             element.type = angular.lowercase(element.type);
+							
+							if (element.type=='open'){
+								//if (element.href.indexOf('.hdr' ,element.href.length-4 )!=-1){
+								//	//element.label = 'open page';
+								//	element.type='hdr';
+								//	//http://dx.doi.org/10.5069/G9XW4GQ0
+								//}else 
+								if (element.href.indexOf('http://dx.doi.org' ,0 )!=-1){
+									element.type = 'doi';
+									
+								}else if (element.href.indexOf('http://criticalzone.org' ,0 )!=-1){
+									element.type = 'cmspage';
+								}else{
+									element.type='hdr';
+								}
+								
+							
+							}
+							
                             scope.links.push(element);
                         }
                     });
@@ -33551,7 +33611,7 @@ angular.module('wcodpApp').controller('HomeCtrl', ['$scope', '$http', '$window',
 		if ($scope.searchText && $scope.searchText.length > 0) {
 			searchText = $scope.searchText;
 		}
-		$window.location.href = '/discover/#?text='+searchText;
+		$window.location.href = '/data/#?text='+searchText;
 	};
 
 	$scope.goTo = function (path) {
