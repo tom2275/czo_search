@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Critical Zone Observatories Data Portal | About</title>
+    <title>CZO Data Portal | About</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/assets/css/all.css?v=0.4">
@@ -28,49 +28,31 @@
 
     <div class="header container">
 		<!--underconstrution-->
-	<div class="row">
+	<!--<div class="row">
 	<div class="span12" style="background-color:yellow;text-align:center"><img src="/assets/img/under_construction.png"></div>
 	</div>
-	<!--underconstrution-->
+	underconstrution-->
 	<div class="row">
 		<div class="span4 brand">
 			<a href="/"><img src="/assets/img/czo_logo.png"></a>
 		</div>
 
-		<!--  D E S K T O P   M E N U -->
+			<!--  D E S K T O P   M E N U -->
 		<div class="span8 visible-desktop">
 			<div class="clearfix">
-				<span class="pull-right description subdued">
-				A project of the <a href="http://www.criticalzone.org" target="_blank">Critical Zone Observatory Project</a></span>
+				<span class="pull-right description subdued">A project of <a href="http://www.criticalzone.org/national" target="_blank">Critical Zone Observatories</a></span>
 			</div>
 			<div class="top-nav">
 				<ul class="unstyled inline">
-					
-						
-						<li>
-						
-							<a href="/discover">discover</a>
-						</li>
-					
-						
-						<li>
-						
-							<a href="/connect">connect</a>
-						</li>
-					
-						
-						<li>
-						
-							<a href="/inform">inform</a>
-						</li>
-					
-						
-						<li class="active about">
-							<img src="/assets/img/icons/menu_caret.png">
-						
-							<a href="/about">about</a>
-						</li>
-					
+					<li>
+						<a href="/data">Find Data</a>
+					</li>
+					<li>
+						<a href="/api">Access API</a>
+					</li>
+					<li>
+						<a href="/about">About</a>
+					</li>					
 				</ul>
 			</div>
 		</div>
@@ -79,37 +61,18 @@
 		<div class="dropdown top-nav-mobile hidden-desktop">
 			<a class="dropdown-toggle" href="javascript:void(0)">MENU <i class="icon-angle-down"></i></a>
 			<ul class="dropdown-menu pull-right">
-				
+					<li class="active ">
+						<a href="/">Home</a>
+					</li>
 					<li>
-				
-						<a href="/">home</a>
+						<a href="/data">Find Data</a>
 					</li>
-				
-				
-					
 					<li>
-					
-						<a href="/discover">discover</a>
+						<a href="/api">Access API</a>
 					</li>
-				
-					
 					<li>
-					
-						<a href="/connect">connect</a>
-					</li>
-				
-					
-					<li>
-					
-						<a href="/inform">inform</a>
-					</li>
-				
-					
-					<li class="active about">
-					
-						<a href="/about">about</a>
-					</li>
-				
+						<a href="/about">About</a>
+					</li>					
 			</ul>				
 		</div>
 
@@ -118,66 +81,122 @@
 
     <div class="container" id="about" ng-controller="AboutCtrl">
 
-	<div class="row">
-		
-		<div class="home-item blue span7">
-			<div class="home-item-cntr about">
+        <div class="row">
 
-				<div class="home-item-label inverse clearfix">
-					<div class="pull-left">ABOUT THE PORTAL</div>
-				</div>
+                <div class="home-item blue span7">
+                        <div class="home-item-cntr about">
 
-				<div>
-					<p>
-					Need text to put here... 
-					
-					
-					</p>
-				</div>
+                                <div class="home-item-label inverse clearfix">
+                                        <div class="pull-left">ABOUT THE PORTAL</div>
+                                </div>
 
-			</div>
-		</div>
+                                <div>
+                                        <p><strong>THE CZO DATA PORTAL</strong> enables rapid exploration and filtering of the many datasets used by the <a href="http://criticalzone.org/national">US NSF Critical Observatories program</a>.  These data span a wide range of disciplines in earth, environmental, and biological sciences. Data have been created by CZO and its partners.  Some datasets were created prior to the start of the CZO program.</p>
 
-		<div class="home-item white span5">
-			<div class="home-item-cntr learn-more">
+                                        <p>The Portal is based solely on extensive metadata, which includes pointers to data files.  The files themselves are stored elsewhere, mostly on servers at the 10 individual CZO observatories.</p>
 
-				<h3>Learn More</h3>
+                                        <p>CZO data can be searched simultaneously alongside related, non-CZO data collections like ‘LiDAR data of the US’ from OpenTopography.org. All Portal content is available as multiple web services via <a href="/api">our API access</a>. </p>
 
-				<div>
-					<p>To learn more about the Portal, get updates,  or provide feedback, please visit the <a target="_blank" href="http://www.criticalzone.org/">Critical Zone Data Team</a> page </a>.</p>
-				</div>
+                                </div>
 
-			</div>
-		</div>
+                        </div>
+                </div>
 
-	</div>
+                <div class="home-item white span5">
+                        <div class="home-item-cntr learn-more">
 
-	<div class="row">
+                                <div>
+                                        <p><strong>THE CRITICAL ZONE</strong> is Earth’s outer skin - from the top of the vegetation down into the groundwater. <span style="font-size:80%;">(Illustration modified from Chorover et al., 2007)</span></p>
 
-		<hr>
-		
-		<div class="span6 success-story">
-			<div class="cntr">
-				<p>
-				Need text here....</p>
-			</div>
-		</div>		
-		
-		<div class="span6 success-story">
-			<div class="img-container">
-				<div class="subdued small">SENTINEL ROCKS ON THE WASHINGTON COAST</div>
-				<img src="/assets/img/photos/sentinel_rocks_wa.jpg" alt="Sentinel Rocks in Washington">
-			</div>
-		</div>
+                                        <img src="/assets/img/photos/czo_wedge.jpg" alt="illustration of the parts of the Critical Zone">
 
-	</div>
-		<div class="subdued small span12">
-				<h4>Photo Credits</h4>
-				<div>
-					<p>HOMEPAGE (From Left – <a href="http://www.photolib.noaa.gov/" target="_blank"> NOAA</a>, Dana Murray,<a href="http://seafloor.otterlabs.org/" target="_blank"> CSU Monterey Bay Seafloor Mapping Lab</a>); CONNECT (<a href="http://www.photolib.noaa.gov/" target="_blank">NOAA</a>); INFORM (Roy Lowe,<a href="http://www.photolib.noaa.gov/" target="_blank"> NOAA</a>); ABOUT (<a href="http://andylanierphotography.com/index.php/en/" target="_blank">Andy Lanier</a>).</p>
-				</div>
-		</div>
-	</div>
+                                        <p><a href="http://criticalzone.org/national/research/the-critical-zone-1national/">More about the Critical Zone > </a></p>
+                                </div>
+
+                        </div>
+                </div>
+
+        </div>
+
+        <div class="row">
+
+                <hr>
+
+                <div class="span6 success-story">
+                        <div class="cntr">
+                                <h3>Video introduction</h3>
+                                <p><a href="#">Watch an x min screencast video</a> to get an overview of searching and browsing the CZO Data Portal.</p>
+
+                                <p>The video helps answer questions like: What’s the best way to filter to a subset of data? What are CZO Datasets vs Display Files? Why are Discipline filters only available for CZO Datasets?</p>
+                        </div>
+                </div>
+
+                <div class="span6 success-story">
+                        <div class="img-container">
+                                <img src="/assets/img/photos/screencast_placeholder.jpg" alt="screencast intro video">
+                        </div>
+                </div>
+
+        </div>
+
+        <div class="row">
+
+                <hr>
+
+                <div class="span7 success-story">
+                        <div class="img-container">
+                                <img src="/assets/img/photos/czos_map.jpg" alt="Map of 10 CZO observatories">
+                        </div>
+                        <p style="margin-top:1em;"><a href="http://criticalzone.org/national/infrastructure/observatories-1national/">The Critical Zone Observatory program is based on 10 individual observatories</a> located in differing climatic and physiographic environments, from California to Puerto Rico. Each observatory is an environmental laboratory studying the chemical, physical and biological processes that shape Earth's surface on short-to-long time scales. CZO is supported by the US National Science Foundation (NSF).</p>
+
+                </div>
+
+                <div class="span5 success-story">
+                                <h3>Additional data access points</h3>
+                                <p>The Data Portal is just one place to discover CZO data.</p>
+
+                                <p><a href="http://criticalzone.org/national/data/access-czo-data-1national/">Main Website</a> - Dataset listings for each observatory at criticalzone.org</p>
+                                <p><a href="http://viz.criticalzone.org/">Data Visualization Portal</a> - A map-based tool for exploration and discovery at viz.criticalzone.org (under construction).</p>
+                                <p><a href="http://search.criticalzone.org/pivotpeople/">People Viewer</a> - PivotViewer prototype for filtering subsets of people (under construction). Requires Silverlight plugin.</p>
+                                <p><a href="http://search.criticalzone.org/pivotdata/">Data Viewer</a> - PivotViewer prototype for filtering subsets of data (under construction). Requires Silverlight plugin.</p>
+                                <p><a href="">CZO Data Management</a> - a collaborative effort across CZOs.</p>
+                                <p>Some individual CZOs - additional access for their observatory's data.</p>
+                </div>
+
+        </div>
+
+        <div class="row">
+
+                <hr>
+
+                <div class="span6 success-story">
+                        <div class="cntr">
+                                <h3>Acknowledgments</h3>
+
+<p>Funding for CZO and the CZO Data Portal has been provided by the <a href="http://www.nsf.gov/">US National Science Foundation (NSF)</a>.</p>
+
+<p>Data within the CZO portal comes from many sources.  Datasets have been created by CZO and its partners in recent years, while older datasets precede the creation of the CZO program.  <a href="http://criticalzone.org/national/about/partner-organizations-1national/">CZO partners with more than 150 organizations, universities, and agencies.</a></p>
+
+<p>The Portal is built upon a framework kindly offered to us by the <a href="http://portal.westcoastoceans.org/">West Coast Ocean Data Portal</a>, a project of the <a href="http://www.westcoastoceans.org/">West Coast Governors Alliance on Ocean Health (WCGA).</a> </p>
+                        </div>
+                </div>
+
+                <div class="span6 success-story">
+                        <div class="img-container">
+                                <div class="subdued small">SENTINEL ROCKS ON THE WASHINGTON COAST</div>
+                                <img src="/assets/img/photos/sentinel_rocks_wa.jpg" alt="Sentinel Rocks in Washington">
+                        </div>
+                </div>
+
+        </div>
+
+                <div class="subdued small span12">
+                                <!--<h4>Photo Credits</h4>
+                                <div>
+                                        <p>HOMEPAGE (From Left – <a href="http://www.photolib.noaa.gov/" target="_blank"> NOAA</a>, Dana Murray,<a href="http://seafloor.otterlabs.org/" target="_blank"> CSU Monterey Bay Seafloor Mapping Lab</a>); CONNECT (<a href="http://www.photolib.noaa.gov/" target="_blank">NOAA</a>); INFORM (Roy Lowe,<a href="http://www.photolib.noaa.gov/" target="_blank"> NOAA</a>); ABOUT (<a href="http://andylanierphotography.com/index.php/en/" target="_blank">Andy Lanier</a>).</p>
+                                </div>-->
+                </div>
+        </div>
 
 
 </div>
@@ -186,7 +205,7 @@
 	<div class="row">
 		<div class="span12">
 			<a href="mailto:ec_apps@sdsc.edu">Feedback? email: ec_apps@sdsc.edu</a>
-			<span class="pull-right"><a class="subdued" href="/connect">API ACCESS</a></span>
+			<span class="pull-right"><a class="subdued" href="/api">API ACCESS</a></span>
 		</div>
 	</div>
 </div>
@@ -198,11 +217,17 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     <script src="/assets/js/all.js?v=0.4"></script>
 
-    <script>
-      var _gaq=[['_setAccount','UA-40820108-2'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
+<!-- Google Analytics -->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36782183-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
   </body>
 </html>
