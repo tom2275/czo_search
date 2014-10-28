@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>CZO Portal | Home</title>
+    <title>CZO Data Portal | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/assets/css/all.css?v=0.4">
@@ -28,47 +28,31 @@
 
     <div class="header container">
 		<!--underconstrution-->
-	<div class="row">
+	<!--<div class="row">
 	<div class="span12" style="background-color:yellow;text-align:center"><img src="/assets/img/under_construction.png"></div>
 	</div>
-	<!--underconstrution-->
+	underconstrution-->
 	<div class="row">
 		<div class="span4 brand">
 			<a href="/"><img src="/assets/img/czo_logo.png"></a>
 		</div>
 
-		<!--  D E S K T O P   M E N U -->
+				<!--  D E S K T O P   M E N U -->
 		<div class="span8 visible-desktop">
 			<div class="clearfix">
-				<span class="pull-right description subdued">A project of the <a href="http://www.criticalzone.org" target="_blank">Critical Zone Observatories - Search Portal</a></span>
+				<span class="pull-right description subdued">A project of <a href="http://www.criticalzone.org/national" target="_blank">Critical Zone Observatories</a></span>
 			</div>
 			<div class="top-nav">
 				<ul class="unstyled inline">
-					
-						
-						<li>
-						
-							<a href="/discover">discover</a>
-						</li>
-					
-						
-						<li>
-						
-							<a href="/connect">connect</a>
-						</li>
-					
-						
-						<li>
-						
-							<a href="/inform">inform</a>
-						</li>
-					
-						
-						<li>
-						
-							<a href="/about">about</a>
-						</li>
-					
+					<li>
+						<a href="/data">Find Data</a>
+					</li>
+					<li>
+						<a href="/api">Access API</a>
+					</li>
+					<li>
+						<a href="/about">About</a>
+					</li>					
 				</ul>
 			</div>
 		</div>
@@ -77,37 +61,18 @@
 		<div class="dropdown top-nav-mobile hidden-desktop">
 			<a class="dropdown-toggle" href="javascript:void(0)">MENU <i class="icon-angle-down"></i></a>
 			<ul class="dropdown-menu pull-right">
-				
 					<li class="active ">
-				
-						<a href="/">home</a>
+						<a href="/">Home</a>
 					</li>
-				
-				
-					
 					<li>
-					
-						<a href="/discover">discover</a>
+						<a href="/data">Find Data</a>
 					</li>
-				
-					
 					<li>
-					
-						<a href="/connect">connect</a>
+						<a href="/api">Access API</a>
 					</li>
-				
-					
 					<li>
-					
-						<a href="/inform">inform</a>
-					</li>
-				
-					
-					<li>
-					
-						<a href="/about">about</a>
-					</li>
-				
+						<a href="/about">About</a>
+					</li>					
 			</ul>				
 		</div>
 
@@ -118,19 +83,19 @@
 <div class="container" id="home" ng-controller="HomeCtrl">
 	<div class="row packery-container">
 
-		<a class="home-item home-item-larger first-item green1 span8 clearfix" href="http://www.criticalzone.org">
+		<a class="home-item home-item-larger first-item green1 span8 clearfix" href="/about">
 			<div class="home-item-cntr welcome">
 				<div class="home-item-label clearfix">
-					<div class="pull-left">WELCOME</div>
+					<div class="pull-left">ABOUT</div>
 				</div>
-				<p class="big">The National CZO Program is a community resource. The Program serves the international scientific community through research, infrastructure, data, and models.</span></p>			
+				<p class="big">Data used by the CZO Program to study Earth's outer skin – from the top of the vegetation down into the groundwater. <span style="text-decoration:underline;">See more info</span>.</p>			
 			</div>
 		</a>
 
 		<div class="home-item home-item-smaller red span4">
 			<div class="home-item-cntr search">
 				<div ng-cloak class="giantText">{{ recordCount }}</div>
-				<p>registered resources</p>
+				<p style="color:#332e1f;">data resources</p>
 				<form ng-submit="search()">
 					<div id="search-filter">
 						<input type="search" placeholder="SEARCH" ng-model="searchText">
@@ -140,34 +105,21 @@
 			</div>
 		</div>
 
-		<a class="home-item-biological home-item blue span4 h1" href="/discover/#?text=hydrology">
+		<a class="home-item-biological home-item blue span4 h1" href="/data/#?c=Category..Hydrology">
 			<div class="home-item-cntr">
-				<div class="home-item-label inverse clearfix">
-					<div class="pull-left">DISCOVER</div>
-				</div>
-				<p class="big">Hydrologic Data</p>
-				<img class="home-item-icon" src="/assets/img/icons/white_search.png">
+				<p class="big" style="text-decoration:underline;">Hydrology</p>
 			</div>
 		</a>
 
-		<a class="home-item-marine-debris home-item green2 span5 h1" href="/discover/#?text=meteorological">
+		<a class="home-item-marine-debris home-item green2 span5 h1" href="/data/#?c=Category..Climatology_%2F_Meteorology">
 			<div class="home-item-cntr">
-				<div class="home-item-label clearfix">
-					<div class="pull-left">DISCOVER</div>
-				</div>
-				<p class="big">Meteorological Data</p>
-				<img class="home-item-icon" src="/assets/img/icons/white_search.png">
+				<p class="big" style="text-decoration:underline;">Climatology / Meteorology</p>
 			</div>			
-
 		</a>
 
-		<a class="home-item-human-use home-item green2 span3 h1" href="/discover/#?text=groundwater">
+		<a class="home-item-human-use home-item green2 span3 h1" href="/data/#?c=Category..Soil_Science_%2F_Pedology">
 			<div class="home-item-cntr">
-				<div class="home-item-label inverse clearfix">
-					<div class="pull-left">DISCOVER</div>
-				</div>
-				<p class="big">Ground water</p>
-				<img class="home-item-icon" src="/assets/img/icons/white_search.png">
+				<p class="big" style="text-decoration:underline;">Pedology (soil)</p>
 			</div>			
 		</a>
 
@@ -186,22 +138,18 @@
 			
 		</a> -->
 
-		<a class="home-item home-item-smallest lightGrey span8 clearfix" href="http://criticalzone.org/national/people/our-investigators/">
+		<a class="home-item home-item-smallest lightGrey span8 clearfix" href="/data">
 			<div class="home-item-cntr welcome">
-				<div class="home-item-label inverse clearfix">
-					<div class="pull-left">EXPLORE</div>
-				</div>
-				<p class="medium"><span class="strong">Contributors:</span> see who is contributing to the registry. <img style="margin-left: 10px;" src="/assets/img/icons/welcome_caret.png"></span></p>			
-			</div>
-		</a>
-
-		<a class="home-item-physical home-item green2 span4 h1" href="/discover/#?text=Physical">
-			<div class="home-item-cntr">
 				<div class="home-item-label inverse clearfix">
 					<div class="pull-left">DISCOVER</div>
 				</div>
-				<p class="big">Physical Data</p>
-				<img class="home-item-icon" src="/assets/img/icons/white_search.png">
+				<p class="big">Browse all data resources <img style="margin-left: 10px;" src="/assets/img/icons/welcome_caret_white.png"></p>			
+			</div>
+		</a>
+
+		<a class="home-item-physical home-item green2 span4 h1" href="/data/#?c=Category..Ecology">
+			<div class="home-item-cntr">
+				<p class="big" style="text-decoration:underline;">Biology / Ecology</p>
 			</div>			
 		</a>
 
@@ -214,7 +162,7 @@
 	<div class="row">
 		<div class="span12">
 			<a href="mailto:ec_apps@sdsc.edu">Feedback? email: ec_apps@sdsc.edu</a>
-			<span class="pull-right"><a class="subdued" href="/connect">API ACCESS</a></span>
+			<span class="pull-right"><a class="subdued" href="/api">API ACCESS</a></span>
 		</div>
 	</div>
 </div>
@@ -225,12 +173,17 @@
 
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     <script src="/assets/js/all.js?v=0.4"></script>
-
-    <script>
-      var _gaq=[['_setAccount','UA-40820108-2'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
+<!-- Google Analytics -->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36782183-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
   </body>
 </html>

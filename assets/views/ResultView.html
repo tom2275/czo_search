@@ -19,7 +19,8 @@
 			
 			
 			<li><a target="_blank" ng-click="linkClicked($event)" href="{{ metadataXmlUrl() }}">METADATA XML</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="Metadata XML Document (ISO or FGDC)"></i></li>
-			<li><a target="_blank" ng-click="linkClicked($event)" href="{{ jsonUrl() }}">JSON</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="ESRI REST Service JSON"></i></li> 
+			<!--<li><a target="_blank" ng-click="linkClicked($event)" href="{{ jsonUrl() }}">JSON</a><i class="icon-info-sign" tooltip-placement="bottom" tooltip="ESRI REST Service JSON"></i></li> -->
+			
 			
 			
 		</ul>
@@ -30,25 +31,25 @@
 		</div>
 		<dl class="result-metadata clearfix">
 			
-			<dt>date published</dt>
-			<dd ng-hide="metadata.datePublished">not available</dd>
+			<!--<dt>date published</dt>
+			<dd ng-hide="metadata.datePublished">not available</dd>-->
 			<dd ng-show="metadata.datePublished">{{metadata.datePublished}}</dd>
 
-			<dt>creator</dt>
-			<dd ng-hide="metadata.creator">not available</dd>
+			<!--<<dt>creator</dt>
+			<dd ng-hide="metadata.creator">not available</dd>-->
 			<dd ng-show="metadata.creator">{{metadata.creator}}</dd> 
 			
-			<dt>publisher</dt>
-			<dd ng-hide="metadata.publisher">not available</dd>
+			<!--<<dt>publisher</dt>
+			<dd ng-hide="metadata.publisher">not available</dd>-->
 			<dd ng-show="metadata.publisher">{{metadata.publisher}}</dd>
 			
-			<dt>contact</dt>
-			<dd ng-hide="metadata.contactName || metadata.contactEmail">not available</dd>
+			<!--<<dt>contact</dt>
+			<!--<<dd ng-hide="metadata.contactName || metadata.contactEmail">not available</dd>-->
 			<dd ng-show="metadata.contactEmail">{{metadata.contactName}}</dd>
 			<dd ng-show="metadata.contactEmail">{{metadata.contactEmail}}</dd>
 			
-			<dt>constraints</dt>
-			<dd ng-hide="metadata.constraints">not available</dd>
+			<!--<<dt>constraints</dt>
+			<dd ng-hide="metadata.constraints">not available</dd>-->
 			<dd ng-show="metadata.constraints">{{metadata.constraints}}</dd>
 		</dl>
 		<div class="clearfix">&nbsp;</div>
