@@ -20,7 +20,7 @@
 		</form>
 
 
-		<!-- location filter -->
+		<!-- location filter 
 		<a class="filter-group-toggle first" href="javascript:void(0)" ng-click="isLocationCollapsed = !isLocationCollapsed">
 			<div class="filter-group-label">
 				<i class="icon-map-marker subdued"></i>
@@ -48,7 +48,7 @@
 			</p>
 		
 		</div>
-
+-->
 		<!-- categories filter -->
 		<!--<a class="filter-group-toggle" href="javascript:void(0)" ng-click="isCategoryCollapsed = !isCategoryCollapsed">
 			<div class="filter-group-label">
@@ -143,7 +143,7 @@
 		<div collapse="isCategoryCollapsed" id="categories-filter" class="filter-group-container">
 
 			<div class="filter-option-group" ng-repeat="category in categories">
-				<p class="filter-option-group-label">{{ category.label | titleCase }} Data</p>
+				<p class="filter-option-group-label">{{ category.label | titleCase }}</p>
 				<ul class="unstyled filter-options">
 					<li ng-repeat="subcategory in category.subcategories" ng-click="toggleSubcategory(subcategory.key)">
 						<i ng-class="{'icon-check': isSelectedSubcategory(subcategory.key), 
@@ -213,11 +213,11 @@
 
 
 
-                <!-- sources filter 
+                <!-- sources filter -->
                 <a class="filter-group-toggle" href="javascript:void(0)" ng-click="isEcosystemsCollapsed = !isEcosystemsCollapsed">
                         <div class="filter-group-label">
                                 <i class="icon-cloud-download subdued"></i>
-                                Ecosystems
+                                Collections
                                 <i ng-show="isEcosystemsCollapsed" class="icon-angle-right pull-right"></i>
                                 <i ng-hide="isEcosystemsCollapsed" class="icon-angle-down pull-right"></i>
                         </div>
@@ -233,7 +233,7 @@
                 </div>
 				
 								
-
+				<!--
 				<p><label>&nbsp;&nbsp;<input type="checkbox" name="onlyCZOsites" value="CZOonly" checked>&nbsp;Only data from CZOs</label>
 				</p>
 
